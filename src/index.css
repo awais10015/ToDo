@@ -1,1 +1,40 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:wght@600;700&display=swap");
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", var(--font-sans);
+}
+
+@layer base {
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply min-h-screen font-sans text-slate-900 dark:text-slate-100;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .bg-mesh {
+    background-color: #f8fafc;
+    background-image:
+      radial-gradient(at 0% 0%, rgb(199 210 254 / 0.45) 0, transparent 50%),
+      radial-gradient(at 100% 0%, rgb(165 243 252 / 0.35) 0, transparent 45%),
+      radial-gradient(at 50% 100%, rgb(233 213 255 / 0.3) 0, transparent 50%);
+  }
+
+  :is(.dark) .bg-mesh {
+    background-color: #020617;
+    background-image:
+      radial-gradient(at 0% 0%, rgb(67 56 202 / 0.25) 0, transparent 50%),
+      radial-gradient(at 100% 20%, rgb(14 116 144 / 0.2) 0, transparent 45%);
+  }
+}
